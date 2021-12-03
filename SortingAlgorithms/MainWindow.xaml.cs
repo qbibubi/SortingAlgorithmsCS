@@ -36,6 +36,8 @@ namespace SortingAlgorithms
             {
                 /* code */
             }
+            LoadFileLabel.Content = "File loaded successfully.";
+            LoadFileLabel.Foreground = Brushes.Green;
         }
     }
 }
