@@ -41,6 +41,7 @@
                 <Button x:Name="InsertionSort" Content="Insertion sort" Height="20" Width="74" DockPanel.Dock="Top"/>
                 <Button x:Name="Quicksort" Content="Quicksort" Height="20" Width="74" DockPanel.Dock="Top"/>
                 <Button x:Name="Heapsort" Content="Heapsort" Height="20" Width="74" DockPanel.Dock="Top"/>
+                <Button x:Name="Mergesort" Content="Merge sort" Height="20" Width="74" DockPanel.Dock="Top"/>
 
                 <Button x:Name="LoadFile" Content="Load" Click="LoadFile_Click" Height="20" Width="74" DockPanel.Dock="Bottom"/>
 
