@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,18 @@ namespace SortingAlgorithms
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void LoadFile_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Select input file";
+            openFileDialog.Filter = "txt files|*.txt";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                /* code */
+            }
         }
     }
 }
