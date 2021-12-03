@@ -12,8 +12,6 @@
             <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
         <Button x:Name="BubbleSort" Content="Bubble sort" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="LoadFile" Content="Load" HorizontalAlignment="Left" Margin="760,0,0,0" VerticalAlignment="Center" Grid.Row="1" Click="LoadFile_Click"/>
-        <Label x:Name="LoadFileLabel" Content="File not loaded" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center"/>
-
+        <Button x:Name="LoadFile" Content="Load" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Grid.Row="1" Click="LoadFile_Click"/>
     </Grid>
 </Window>
