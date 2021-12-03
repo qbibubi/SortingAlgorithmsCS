@@ -10,13 +10,17 @@
         <SolidColorBrush Color="#FF58758B"/>
         <!--FF3D4F5D-->
     </Window.Background>
-    
+
     <!-- Enables winddow dragging mode-->
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="15"/>
     </WindowChrome.WindowChrome>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
         <Grid VerticalAlignment="Top" Background="#FF3D4F5D">
             <StackPanel Height="15" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button x:Name="Minimize" Content="_" Width="15" Padding="0,-13,0,0"/>
@@ -25,13 +29,23 @@
             </StackPanel>
         </Grid>
 
-        <Grid>
-            
+        <Grid VerticalAlignment="Top" Background="#FF3D4F5D" Margin="0,125,0,0" Grid.Row="1">
+            <StackPanel Height="15" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                <Label x:Name="AuthorLabel" Content="Created by Jakub Sobieraj" Foreground="White" Padding="0, 0, 0, 0"/>
+            </StackPanel>
         </Grid>
-        <Button x:Name="LoadFile" Content="Load" HorizontalAlignment="Center" VerticalAlignment="Top" Click="LoadFile_Click" Height="20" Width="74" Grid.Row="1" Margin="0,265,0,0"/>
-        <Button x:Name="BubbleSort" Content="Bubble sort" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Height="20" Width="74" Grid.Row="1"/>
-        <Button x:Name="InsertionSort" Content="Insertion sort" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Height="20" Width="74" Grid.Row="1"/>
-        <Button x:Name="Quicksort" Content="Quicksort" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" Width="74" Height="20" Grid.Row="1"/>
-        <Button x:Name="Heapsort" Content="Heapsort" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top" Width="74" Height="20" Grid.Row="1"/>
+
+        <Grid Grid.RowSpan="2">
+            <DockPanel Height="320" Width="107" LastChildFill="False" Margin="0,15,493,15" Background="#FF45647C">
+                <Button x:Name="BubbleSort" Content="Bubble sort" Height="20" Width="74" DockPanel.Dock="Top"/>
+                <Button x:Name="InsertionSort" Content="Insertion sort" Height="20" Width="74" DockPanel.Dock="Top"/>
+                <Button x:Name="Quicksort" Content="Quicksort" Height="20" Width="74" DockPanel.Dock="Top"/>
+                <Button x:Name="Heapsort" Content="Heapsort" Height="20" Width="74" DockPanel.Dock="Top"/>
+
+                <Button x:Name="LoadFile" Content="Load" Click="LoadFile_Click" Height="20" Width="74" DockPanel.Dock="Bottom"/>
+
+            </DockPanel>
+        </Grid>
+
     </Grid>
 </Window>
