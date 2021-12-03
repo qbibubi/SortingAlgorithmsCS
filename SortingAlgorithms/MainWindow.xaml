@@ -5,16 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SortingAlgorithms"
         mc:Ignorable="d"
-        Title="Sorting Algorithms" Height="350" Width="600" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150*"/>
-            <ColumnDefinition Width="450*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="BubbleSort" Content="Bubble sort" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="20" Width="74"/>
-        <Button x:Name="LoadFile" Content="Load" HorizontalAlignment="Center" Margin="0,320,0,0" VerticalAlignment="Top" Click="LoadFile_Click" Height="20" Width="74"/>
-        <Button Content="Insertion sort" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top"/>
-        <Button Content="Quicksort" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Width="74"/>
+        Title="Sorting Algorithms" Height="350" Width="600" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Background>
+        <SolidColorBrush Color="#FF58758B"/>
+        <!--FF3D4F5D-->
+    </Window.Background>
+    
+    <!-- Enables winddow dragging mode-->
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="15"/>
+    </WindowChrome.WindowChrome>
 
+    <Grid>
+        <Grid VerticalAlignment="Top" Background="#FF3D4F5D">
+            <StackPanel Height="15" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button x:Name="Minimize" Content="_" Width="15" Padding="0,-13,0,0"/>
+                <Button x:Name="Maximize" Content="+" Width="15" Padding="0,-3,0,0"/>
+                <Button x:Name="Exit" Content="x" Width="15" Padding="0,-3,0,0" />
+            </StackPanel>
+        </Grid>
+
+        <Grid>
+            
+        </Grid>
+        <Button x:Name="LoadFile" Content="Load" HorizontalAlignment="Center" VerticalAlignment="Top" Click="LoadFile_Click" Height="20" Width="74" Grid.Row="1" Margin="0,265,0,0"/>
+        <Button x:Name="BubbleSort" Content="Bubble sort" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Height="20" Width="74" Grid.Row="1"/>
+        <Button x:Name="InsertionSort" Content="Insertion sort" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" Height="20" Width="74" Grid.Row="1"/>
+        <Button x:Name="Quicksort" Content="Quicksort" HorizontalAlignment="Center" Margin="0,65,0,0" VerticalAlignment="Top" Width="74" Height="20" Grid.Row="1"/>
+        <Button x:Name="Heapsort" Content="Heapsort" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top" Width="74" Height="20" Grid.Row="1"/>
     </Grid>
 </Window>
