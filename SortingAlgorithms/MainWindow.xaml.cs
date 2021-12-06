@@ -157,6 +157,7 @@ namespace SortingAlgorithms
             Maximize.Click += (s, e) => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
             Exit.Click += (s, e) => Close();
         }
+
         public List<int> data = new List<int>();
         private bool LoadFile()
         {
@@ -185,6 +186,28 @@ namespace SortingAlgorithms
         private void LoadFile_Click(object sender, RoutedEventArgs e)
         {
             LoadFile();
+        }
+
+        private void BubbleSort_Click(object sender, RoutedEventArgs e)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            SortAlgs.BubbleSort(data);
+            stopwatch.Stop();
+
+            ElapsedTimeLabel.Content = "Elapsed time: " + stopwatch.ElapsedMilliseconds + "ms";
+        }
+
+        private void InsertionSort_Click(object sender, RoutedEventArgs e)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            SortAlgs.InsertionSort(data);
+            stopwatch.Stop();
+
+            ElapsedTimeLabel.Content = "Elapsed time: " + stopwatch.ElapsedMilliseconds + "ms";
         }
     }
 }
