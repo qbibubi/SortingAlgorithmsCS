@@ -43,9 +43,16 @@
                 <Button x:Name="Heapsort" Content="Heapsort" Height="20" Width="74" DockPanel.Dock="Top"/>
                 <Button x:Name="Mergesort" Content="Merge sort" Height="20" Width="74" DockPanel.Dock="Top"/>
 
-                <Button x:Name="LoadFile" Content="Load" Click="LoadFile_Click" Height="20" Width="74" DockPanel.Dock="Bottom"/>
+                <Button x:Name="LoadFileButton" Content="Load" Click="LoadFile_Click" Height="20" Width="74" DockPanel.Dock="Bottom"/>
 
             </DockPanel>
+        </Grid>
+
+        <Grid Margin="107,15,0,15" Grid.RowSpan="2">
+            <Label x:Name="CurrentAlgorithmLabel" Content="Current algorithm: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
+            <Label x:Name="ElapsedTimeLabel" Content="Elapsed time: " HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="110" Foreground="White"/>
+            <Label x:Name="DataSetSizeLabel" Content="Data set size:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="110" Foreground="White"/>
+
         </Grid>
 
     </Grid>

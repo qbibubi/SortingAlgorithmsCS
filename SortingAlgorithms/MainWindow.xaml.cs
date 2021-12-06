@@ -1,6 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -155,8 +157,8 @@ namespace SortingAlgorithms
             Maximize.Click += (s, e) => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
             Exit.Click += (s, e) => Close();
         }
-
-        private void LoadFile_Click(object sender, RoutedEventArgs e)
+        public List<int> data = new List<int>();
+        private bool LoadFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Select input file";
@@ -164,9 +166,25 @@ namespace SortingAlgorithms
 
             if (openFileDialog.ShowDialog() == true)
             {
-                /* code */
+                StreamReader reader = new StreamReader(openFileDialog.OpenFile());
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    int value = 0;
+
+                    if (!string.IsNullOrWhiteSpace(line) && int.TryParse(line, out value))
+                        data.Add(value);
+                }
+                MessageBox.Show("File loaded successfully!", "Success!");
             }
-            MessageBox.Show("File loaded succsessfully", "Success!");
+
+            return true;
+        }
+
+        private void LoadFile_Click(object sender, RoutedEventArgs e)
+        {
+            LoadFile();
         }
     }
 }
