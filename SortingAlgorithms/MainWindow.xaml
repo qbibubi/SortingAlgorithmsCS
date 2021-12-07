@@ -44,7 +44,7 @@
                 <Button x:Name="Heapsort" Content="Heapsort" Height="20" Width="74" DockPanel.Dock="Top"/>
                 <Button x:Name="Mergesort" Content="Merge sort" Height="20" Width="74" DockPanel.Dock="Top"/>
                 <Label x:Name="CustomInput" Content="Iterations" DockPanel.Dock="Top" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBox x:Name="NumberTextBox" PreviewTextInput="NumberValidationTextBox" Height="20" Width="74" DockPanel.Dock="Top"/>
+                <TextBox x:Name="NumberTextBox"  Height="20" Width="74" DockPanel.Dock="Top" Text="1" TextChanged="NumberTextBox_TextChanged"/>
                 <Button x:Name="LoadFileButton" Content="Load" Click="LoadFile_Click" Height="20" Width="74" DockPanel.Dock="Bottom"/>
 
             </DockPanel>
