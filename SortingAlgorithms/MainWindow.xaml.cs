@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 namespace SortingAlgorithms
 {
@@ -188,28 +189,79 @@ namespace SortingAlgorithms
             LoadFile();
         }
 
+        /* Helper function for setting contents of labels (current alg, elapsed time, data size) */
+        private void StringChanged(string alg, long delta_time, int data_size)
+        {
+            CurrentAlgorithmLabel.Content = "Current algorithm: " + alg;
+            ElapsedTimeLabel.Content = "Elapsed time: " + delta_time + "ms";
+            DataSetSizeLabel.Content = "Data set size: " + data_size.ToString();
+        }
+
+        private int GetIterations(TextBox textbox)
+        {
+            string s_it = textbox.Text;
+            int it = Int32.Parse(s_it);
+
+            return it;
+        }
         private void BubbleSort_Click(object sender, RoutedEventArgs e)
         {
             Stopwatch stopwatch = new Stopwatch();
+            int it = GetIterations(CustomInput);
 
             stopwatch.Start();
-            SortAlgs.BubbleSort(data);
+            for(int i = 0; i < it; i++)
+            {
+                SortAlgs.BubbleSort(data);
+            }
             stopwatch.Stop();
 
-            ElapsedTimeLabel.Content = "Elapsed time: " + stopwatch.ElapsedMilliseconds + "ms";
+            StringChanged("Bubble sort", stopwatch.ElapsedMilliseconds, 1000);
         }
 
         private void InsertionSort_Click(object sender, RoutedEventArgs e)
         {
             Stopwatch stopwatch = new Stopwatch();
+            int it = GetIterations(CustomInput);
 
             stopwatch.Start();
             SortAlgs.InsertionSort(data);
             stopwatch.Stop();
 
-            ElapsedTimeLabel.Content = "Elapsed time: " + stopwatch.ElapsedMilliseconds + "ms";
+            StringChanged("Insertion sort", stopwatch.ElapsedMilliseconds, 1000);
         }
 
+        private void Quicksort_Click(object sender, RoutedEventArgs e)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            int it = GetIterations(CustomInput);
+
+            stopwatch.Start();
+            //SortAlgs.Quicksort(data);
+            stopwatch.Stop();
+        }
+
+        private void Heapsort_Click(object sender, RoutedEventArgs e)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            int it = GetIterations(CustomInput);
+
+            stopwatch.Start();
+            //SortAlgs.Heapsort(data);
+            stopwatch.Stop();
+        }
+
+        private void Mergesort_Click(object sender, RoutedEventArgs e)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            int it = GetIterations(CustomInput);
+
+            stopwatch.Start();
+            //SortAlgs.Mergesort(data);
+            stopwatch.Stop();
+        }
+
+        /* Disables possibility for input of non-numeric values into textbox */
         private void NumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -223,6 +275,14 @@ namespace SortingAlgorithms
 
                 textBox.Text = textBox.Text.Remove(iOffset, iAddedLength);
             }
+        }
+
+        /* Shuffles ints in data 
+         * This takes too much time for some fucking reason
+         */
+        private void DataRandomizer_Click(object sender, RoutedEventArgs e)
+        {
+            Randomize.Shuffle(data);
         }
     }
 }
