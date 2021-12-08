@@ -57,5 +57,44 @@ namespace SortingAlgorithms
                 return list;
         }
 
+        static int Partition(List<int> list, int low, int high)
+        {
+            /* 1. Select a pivot point. */
+            int pivot = list[high];
+            int lowIndex = low - 1;
+
+            /* 2. Reorder the collection. */
+            for (int j = low; j < high; j++)
+            {
+                if (list[j] <= pivot)
+                {
+                    lowIndex++;
+
+                    int temp = list[lowIndex];
+                    list[lowIndex] = list[j];
+                    list[j] = temp;
+                }
+            }
+
+            int temp1 = list[lowIndex + 1];
+            list[lowIndex + 1] = list[high];
+            list[high] = temp1;
+
+            return lowIndex + 1;
+        }
+
+        public static List<int> Quicksort(List<int> list, int low, int high)
+        {
+            if (low < high)
+            {
+                int partitionIndex = Partition(list, low, high);
+
+                //3. Recursively continue sorting the array
+                Quicksort(list, low, partitionIndex - 1);
+                Quicksort(list, partitionIndex + 1, high);
+            }
+
+            return list;
+        }
     }
 }
