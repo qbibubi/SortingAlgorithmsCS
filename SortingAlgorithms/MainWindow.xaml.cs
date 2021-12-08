@@ -196,7 +196,7 @@ namespace SortingAlgorithms
         {
             CurrentAlgorithmLabel.Content = "Current algorithm: " + alg;
             ElapsedTimeLabel.Content = "Elapsed time: " + delta_time + "ms";
-            DataSetSizeLabel.Content = "Data set size: " + data_size.ToString();
+            DataSetSizeLabel.Content = "Data size: " + data_size.ToString();
         }
 
         private int GetIterations(TextBox textbox)
@@ -290,13 +290,13 @@ namespace SortingAlgorithms
             }
         }
 
-        /* Shuffles ints in data 
+        /* Shuffles integers around in List<int> data
          * This takes too much time for some fucking reason
          */
         private void DataRandomizer_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("For some reason this function makes the program go bonkers so I disabled it to not fry your PC :)", "Hi there!");
-            //Randomize.Shuffle(data);
+            // Randomize.Shuffle(data);
         }
     }
 }
