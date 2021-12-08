@@ -255,7 +255,7 @@ namespace SortingAlgorithms
 
             stopwatch.Start();
             for (int i = 0; i < it; i++)
-                SortAlgs.Heapsort(data, data.Count);
+                SortAlgs.Heapsort(data, data.Count-1);
 
             stopwatch.Stop();
             StringChanged("Heapsort", stopwatch.ElapsedMilliseconds, data.Count);
@@ -268,7 +268,7 @@ namespace SortingAlgorithms
 
             stopwatch.Start();
             for (int i = 0; i < it; i++)
-                SortAlgs.Mergesort(data, 0, data.Count);
+                SortAlgs.Mergesort(data, 0, data.Count-1);
 
             stopwatch.Stop();
             StringChanged("Mergesort", stopwatch.ElapsedMilliseconds, data.Count);
