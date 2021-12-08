@@ -40,20 +40,23 @@
             <DockPanel Height="320" Width="107" LastChildFill="False" Margin="0,15,493,15" Background="#FF45647C">
                 <Button x:Name="BubbleSort" Content="Bubble sort" Height="20" Width="74" DockPanel.Dock="Top" Click="BubbleSort_Click"/>
                 <Button x:Name="InsertionSort" Content="Insertion sort" Height="20" Width="74" DockPanel.Dock="Top" Click="InsertionSort_Click"/>
-                <Button x:Name="Quicksort" Content="Quicksort" Height="20" Width="74" DockPanel.Dock="Top"/>
-                <Button x:Name="Heapsort" Content="Heapsort" Height="20" Width="74" DockPanel.Dock="Top"/>
-                <Button x:Name="Mergesort" Content="Merge sort" Height="20" Width="74" DockPanel.Dock="Top"/>
-                <Label x:Name="CustomInput" Content="Iterations" DockPanel.Dock="Top" Foreground="White" HorizontalAlignment="Center"/>
-                <TextBox x:Name="NumberTextBox"  Height="20" Width="74" DockPanel.Dock="Top" Text="1" TextChanged="NumberTextBox_TextChanged"/>
+                <Button x:Name="Quicksort" Content="Quicksort" Height="20" Width="74" DockPanel.Dock="Top" Click="Quicksort_Click"/>
+                <Button x:Name="Heapsort" Content="Heapsort" Height="20" Width="74" DockPanel.Dock="Top" Click="Heapsort_Click"/>
+                <Button x:Name="Mergesort" Content="Merge sort" Height="20" Width="74" DockPanel.Dock="Top" Click="Mergesort_Click"/>
+                
+                <Label x:Name="CustomInputLabel" Content="Iterations" DockPanel.Dock="Top" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBox x:Name="CustomInput" Height="20" Width="74" DockPanel.Dock="Top" Text="1" TextChanged="NumberTextBox_TextChanged"/>
+                
                 <Button x:Name="LoadFileButton" Content="Load" Click="LoadFile_Click" Height="20" Width="74" DockPanel.Dock="Bottom"/>
+                <Button x:Name="DataRandomizer" Content="Randomize" Height="20" Width="74" DockPanel.Dock="Bottom" Click="DataRandomizer_Click"/>
 
             </DockPanel>
         </Grid>
 
         <Grid Margin="107,15,0,15" Grid.RowSpan="2">
-            <Label x:Name="CurrentAlgorithmLabel" Content="Current algorithm: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White"/>
-            <Label x:Name="ElapsedTimeLabel" Content="Elapsed time: " HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="110" Foreground="White"/>
-            <Label x:Name="DataSetSizeLabel" Content="Data set size:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="110" Foreground="White"/>
+            <Label x:Name="CurrentAlgorithmLabel" Content="Current algorithm: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" Foreground="White"/>
+            <Label x:Name="ElapsedTimeLabel" Content="Elapsed time: " HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="200" Foreground="White"/>
+            <Label x:Name="DataSetSizeLabel" Content="Data set size:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="200" Foreground="White"/>
 
         </Grid>
 
