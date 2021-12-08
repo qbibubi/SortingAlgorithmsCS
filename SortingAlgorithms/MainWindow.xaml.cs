@@ -160,8 +160,10 @@ namespace SortingAlgorithms
         }
 
         public List<int> data = new List<int>();
-        private bool LoadFile()
+        private List<int> LoadFile(List<int> list)
         {
+            list.Clear();
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Select input file";
             openFileDialog.Filter = "txt files|*.txt";
@@ -181,12 +183,12 @@ namespace SortingAlgorithms
                 MessageBox.Show("File loaded successfully!", "Success!");
             }
 
-            return true;
+            return list;
         }
 
         private void LoadFile_Click(object sender, RoutedEventArgs e)
         {
-            LoadFile();
+            LoadFile(data);
         }
 
         /* Helper function for setting contents of labels (current alg, elapsed time, data size) */
@@ -208,15 +210,14 @@ namespace SortingAlgorithms
         {
             Stopwatch stopwatch = new Stopwatch();
             int it = GetIterations(CustomInput);
-
             stopwatch.Start();
+
             for(int i = 0; i < it; i++)
-            {
                 SortAlgs.BubbleSort(data);
-            }
+
             stopwatch.Stop();
 
-            StringChanged("Bubble sort", stopwatch.ElapsedMilliseconds, 1000);
+            StringChanged("Bubble sort", stopwatch.ElapsedMilliseconds, data.Count);
         }
 
         private void InsertionSort_Click(object sender, RoutedEventArgs e)
@@ -225,10 +226,12 @@ namespace SortingAlgorithms
             int it = GetIterations(CustomInput);
 
             stopwatch.Start();
-            SortAlgs.InsertionSort(data);
+            for (int i = 0; i < it; i++)
+                SortAlgs.InsertionSort(data);
+
             stopwatch.Stop();
 
-            StringChanged("Insertion sort", stopwatch.ElapsedMilliseconds, 1000);
+            StringChanged("Insertion sort", stopwatch.ElapsedMilliseconds, data.Count);
         }
 
         private void Quicksort_Click(object sender, RoutedEventArgs e)
@@ -237,8 +240,12 @@ namespace SortingAlgorithms
             int it = GetIterations(CustomInput);
 
             stopwatch.Start();
-            //SortAlgs.Quicksort(data);
+            for (int i = 0; i < it; i++)
+                SortAlgs.Quicksort(data, 0, data.Count);
+
             stopwatch.Stop();
+
+            StringChanged("Quicksort", stopwatch.ElapsedMilliseconds, data.Count);
         }
 
         private void Heapsort_Click(object sender, RoutedEventArgs e)
@@ -247,8 +254,11 @@ namespace SortingAlgorithms
             int it = GetIterations(CustomInput);
 
             stopwatch.Start();
-            //SortAlgs.Heapsort(data);
+            for (int i = 0; i < it; i++)
+                SortAlgs.Heapsort(data, data.Count);
+
             stopwatch.Stop();
+            StringChanged("Heapsort", stopwatch.ElapsedMilliseconds, data.Count);
         }
 
         private void Mergesort_Click(object sender, RoutedEventArgs e)
@@ -257,8 +267,11 @@ namespace SortingAlgorithms
             int it = GetIterations(CustomInput);
 
             stopwatch.Start();
-            //SortAlgs.Mergesort(data);
+            for (int i = 0; i < it; i++)
+                SortAlgs.Mergesort(data, 0, data.Count);
+
             stopwatch.Stop();
+            StringChanged("Mergesort", stopwatch.ElapsedMilliseconds, data.Count);
         }
 
         /* Disables possibility for input of non-numeric values into textbox */
@@ -282,7 +295,8 @@ namespace SortingAlgorithms
          */
         private void DataRandomizer_Click(object sender, RoutedEventArgs e)
         {
-            Randomize.Shuffle(data);
+            MessageBox.Show("For some reason this function makes the program go bonkers so I disabled it to not fry your PC :)", "Hi there!");
+            //Randomize.Shuffle(data);
         }
     }
 }

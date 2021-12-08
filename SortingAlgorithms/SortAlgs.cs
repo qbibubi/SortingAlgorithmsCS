@@ -135,5 +135,68 @@ namespace SortingAlgorithms
 
             return list;
         }
+
+        public static List<int> Merge(List<int> list, int p, int q, int r)
+        {
+            int n1 = q - p + 1;
+            int n2 = r - q;
+            int[] L = new int[n1];
+            int[] R = new int[n2];
+            int i, j, k;
+
+            for (i = 0; i < n1; i++)
+                L[i] = list[p + i];
+
+            for (j = 0; j < n2; j++)
+                R[j] = list[q + 1 + j];
+
+            i = 0;
+            j = 0;
+
+            k = p;
+            while (i < n1 && j < n2)
+            {
+                if (L[i] <= R[j])
+                {
+                    list[k] = L[i];
+                    i++;
+                }
+                else
+                {
+                    list[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+
+            while (i < n1)
+            {
+                list[k] = L[i];
+                i++;
+                k++;
+            }
+
+            while (j < n2)
+            {
+                list[k] = R[j];
+                j++;
+                k++;
+            }
+
+            return list;
+        }
+
+        public static List<int> Mergesort(List<int> list, int p, int r)
+        {
+            if (p < r)
+            {
+                int q = (p + r) / 2;
+                Mergesort(list, p, q);
+                Mergesort(list, q + 1, r);
+                Merge(list, p, q, r);
+            }
+
+            return list;
+        }
     }
 }
