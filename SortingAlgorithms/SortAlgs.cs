@@ -61,26 +61,31 @@ namespace SortingAlgorithms
         {
             /* 1. Select a pivot point. */
             int pivot = list[high];
-            int lowIndex = low - 1;
 
-            /* 2. Reorder the collection. */
-            for (int j = low; j < high; j++)
+            while(true)
             {
-                if (list[j] <= pivot)
+                while (list[low] < pivot)
                 {
-                    lowIndex++;
-
-                    int temp = list[lowIndex];
-                    list[lowIndex] = list[j];
-                    list[j] = temp;
+                    low++;
                 }
+
+                while (list[high] > pivot)
+                {
+                    high--;
+                }
+
+                if (low < high)
+                {
+                    if (list[low] == list[high])
+                        return high;
+
+                    int temp = list[low];
+                    list[low] = list[high];
+                    list[high] = temp;
+                }
+                else return high;
+
             }
-
-            int temp1 = list[lowIndex + 1];
-            list[lowIndex + 1] = list[high];
-            list[high] = temp1;
-
-            return lowIndex + 1;
         }
 
         public static List<int> Quicksort(List<int> list, int low, int high)
@@ -89,9 +94,12 @@ namespace SortingAlgorithms
             {
                 int partitionIndex = Partition(list, low, high);
 
-                //3. Recursively continue sorting the array
-                Quicksort(list, low, partitionIndex - 1);
-                Quicksort(list, partitionIndex + 1, high);
+                //2. Recursively continue sorting the list
+                if (partitionIndex > 1)
+                    Quicksort(list, low, partitionIndex - 1);
+
+                if (partitionIndex +1 < high)
+                    Quicksort(list, partitionIndex + 1, high);
             }
 
             return list;
@@ -191,8 +199,10 @@ namespace SortingAlgorithms
             if (p < r)
             {
                 int q = (p + r) / 2;
+
                 Mergesort(list, p, q);
                 Mergesort(list, q + 1, r);
+
                 Merge(list, p, q, r);
             }
 
