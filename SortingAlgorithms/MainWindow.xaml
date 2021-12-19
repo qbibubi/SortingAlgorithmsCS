@@ -43,10 +43,10 @@
                 <Button x:Name="Quicksort" Content="Quicksort" Height="20" Width="74" DockPanel.Dock="Top" Click="Quicksort_Click"/>
                 <Button x:Name="Heapsort" Content="Heapsort" Height="20" Width="74" DockPanel.Dock="Top" Click="Heapsort_Click"/>
                 <Button x:Name="Mergesort" Content="Merge sort" Height="20" Width="74" DockPanel.Dock="Top" Click="Mergesort_Click"/>
-                
+
                 <Label x:Name="CustomInputLabel" Content="Iterations" DockPanel.Dock="Top" Foreground="White" HorizontalAlignment="Center"/>
                 <TextBox x:Name="CustomInput" Height="20" Width="74" DockPanel.Dock="Top" Text="1" TextChanged="NumberTextBox_TextChanged"/>
-                
+
                 <Button x:Name="LoadFileButton" Content="Load" Click="LoadFile_Click" Height="20" Width="74" DockPanel.Dock="Bottom"/>
                 <Button x:Name="DataRandomizer" Content="Randomize" Height="20" Width="74" DockPanel.Dock="Bottom" Click="DataRandomizer_Click"/>
 
@@ -57,6 +57,7 @@
             <Label x:Name="CurrentAlgorithmLabel" Content="Current algorithm: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" Foreground="White"/>
             <Label x:Name="ElapsedTimeLabel" Content="Elapsed time: " HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="200" Foreground="White"/>
             <Label x:Name="DataSetSizeLabel" Content="Data set size:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="200" Foreground="White"/>
+            <ListBox x:Name="DataDisplay" Height="220" Margin="10" VerticalAlignment="Bottom"/>
 
         </Grid>
 

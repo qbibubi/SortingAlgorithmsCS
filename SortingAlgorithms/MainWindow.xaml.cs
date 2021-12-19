@@ -162,6 +162,7 @@ namespace SortingAlgorithms
         public List<int> data = new List<int>();
         private List<int> LoadFile(List<int> list)
         {
+            DataDisplay.Items.Clear();
             list.Clear();
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -183,6 +184,11 @@ namespace SortingAlgorithms
                 MessageBox.Show("File loaded successfully!", "Success!");
             }
 
+            foreach (int num in list)
+            {
+                DataDisplay.Items.Add(num.ToString());
+            }
+
             return list;
         }
 
@@ -192,11 +198,18 @@ namespace SortingAlgorithms
         }
 
         /* Helper function for setting contents of labels (current alg, elapsed time, data size) */
-        private void StringChanged(string alg, long delta_time, int data_size)
+        private void StringChanged(string alg, long delta_time, int data_size, List<int> list)
         {
+            DataDisplay.Items.Clear();
+
             CurrentAlgorithmLabel.Content = "Current algorithm: " + alg;
             ElapsedTimeLabel.Content = "Elapsed time: " + delta_time + "ms";
             DataSetSizeLabel.Content = "Data size: " + data_size.ToString();
+            
+            foreach(int num in list)
+            {
+                DataDisplay.Items.Add(num.ToString());
+            }
         }
 
         private int GetIterations(TextBox textbox)
@@ -217,7 +230,7 @@ namespace SortingAlgorithms
 
             stopwatch.Stop();
 
-            StringChanged("Bubble sort", stopwatch.ElapsedMilliseconds, data.Count);
+            StringChanged("Bubble sort", stopwatch.ElapsedMilliseconds, data.Count, data);
         }
 
         private void InsertionSort_Click(object sender, RoutedEventArgs e)
@@ -231,7 +244,7 @@ namespace SortingAlgorithms
 
             stopwatch.Stop();
 
-            StringChanged("Insertion sort", stopwatch.ElapsedMilliseconds, data.Count);
+            StringChanged("Insertion sort", stopwatch.ElapsedMilliseconds, data.Count, data);
         }
 
         private void Quicksort_Click(object sender, RoutedEventArgs e)
@@ -245,7 +258,7 @@ namespace SortingAlgorithms
 
             stopwatch.Stop();
 
-            StringChanged("Quicksort", stopwatch.ElapsedMilliseconds, data.Count);
+            StringChanged("Quicksort", stopwatch.ElapsedMilliseconds, data.Count, data);
         }
 
         private void Heapsort_Click(object sender, RoutedEventArgs e)
@@ -258,7 +271,7 @@ namespace SortingAlgorithms
                 SortAlgs.Heapsort(data, data.Count);
 
             stopwatch.Stop();
-            StringChanged("Heapsort", stopwatch.ElapsedMilliseconds, data.Count);
+            StringChanged("Heapsort", stopwatch.ElapsedMilliseconds, data.Count, data);
         }
 
         private void Mergesort_Click(object sender, RoutedEventArgs e)
@@ -271,7 +284,7 @@ namespace SortingAlgorithms
                 SortAlgs.Mergesort(data, 0, data.Count - 1);
 
             stopwatch.Stop();
-            StringChanged("Mergesort", stopwatch.ElapsedMilliseconds, data.Count);
+            StringChanged("Mergesort", stopwatch.ElapsedMilliseconds, data.Count, data);
         }
 
         /* Disables possibility for input of non-numeric values into textbox */
@@ -290,13 +303,24 @@ namespace SortingAlgorithms
             }
         }
 
-        /* Shuffles integers around in List<int> data
-         * This takes too much time for some fucking reason
-         */
+        private List<int> ShuffleList(List<int> list)
+        {
+            DataDisplay.Items.Clear();
+
+            var rand = new Random();
+            var randData = list.OrderBy(x => rand.Next()).ToList();
+
+            foreach (int num in list)
+            {
+                DataDisplay.Items.Add(num.ToString());
+            }
+
+            return randData;
+        }
+
         private void DataRandomizer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("For some reason this function makes the program go bonkers so I disabled it to not fry your PC :)", "Hi there!");
-            // Randomize.Shuffle(data);
+            data = ShuffleList(data);
         }
     }
 }
